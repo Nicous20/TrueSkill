@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="img_compare:war">
+    <output-path>$PROJECT_DIR$/img_compare/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>img_compare</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="img_compare-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="img_compare:war exploded" />
+    </root>
+  </artifact>
+</component>

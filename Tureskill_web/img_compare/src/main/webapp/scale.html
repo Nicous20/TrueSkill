@@ -1,0 +1,94 @@
+<style>
+  .left {
+    float: left;
+    width: 310px;
+    /*background-color: aqua;*/
+    height: 1000px;
+  }
+
+  .right {
+    /*background-color: bisque;*/
+    height: 1000px;
+  }
+</style>
+<body>
+<div id="getAttr">
+<!--  <p>If you see that sentence, it indicates that some errors in servlet layer</p>-->
+  <img src="Attr/scale.png" alt="scale" width="600" height="142">
+</div>
+<a href="main.html"><button>Back to Main</button></a>
+<form class="" action="scale.html" id="userForm">
+  <input type="radio" name="radio" value="1" title="L" > Left
+  <input type="radio" name="radio" value="-1" title="R" > Right
+  <input type="radio" name="radio" value="0" title="E" > Equal
+  <input type="submit" name="submit" value="submit" id="submit">
+
+</form>
+<!--<div><button onclick="window.location.href='main.html'" type="button" id="">Submit</button></div>-->
+
+<!--img part-->
+<div class="left" id="L"></div>
+<div class="right" id="R"></div>
+
+</body>
+
+<script src="js/axios-0.18.0.js"></script>
+<script>
+
+  window.onload = function () {
+    axios({
+      method:"get",
+      url:"http://localhost:80/mainServlet"
+    }).then(function (resp) {
+      let comparison = resp.data;
+
+      // let p1Data = "<img src=\"Attr/"+
+      //         comparison.attr +
+      //         ".png\" width=\"600\" height=\"160\">";
+
+      let lDir = comparison.item1;
+      let rDir = comparison.item2;
+      let LData = "<div><img src=\"Set/" + lDir + "/0.jpg \" width=\"300\" height=\"240\"></div>"
+              +"<div><img src=\"Set/" + lDir + "/1.jpg \" width=\"300\" height=\"240\"></div>"
+              +"<div><img src=\"Set/" + lDir + "/2.jpg \" width=\"300\" height=\"240\"></div>"
+      let RData = "<div><img src=\"Set/" + rDir + "/0.jpg \" width=\"300\" height=\"240\"></div>"
+              +"<div><img src=\"Set/" + rDir + "/1.jpg \" width=\"300\" height=\"240\"></div>"
+              +"<div><img src=\"Set/" + rDir + "/2.jpg \" width=\"300\" height=\"240\"></div>"
+
+
+      document.getElementById("L").innerHTML = LData;
+      document.getElementById("R").innerHTML = RData;
+    })
+  }
+
+  document.getElementById("submit").onclick = function () {
+    //change form data to json
+    var obj = document.getElementsByName("radio");
+    var resData ={
+      res:"null",
+      attr:"scale"
+    }
+    for( i =0;i< obj.length;i++){
+      if(obj[i].checked){
+        resData.res = obj[i].value;
+      }
+    }
+
+
+    // console.log(res);
+    //set ajax
+    axios({
+      method: "post",
+      url: "http://localhost:80/getServlet",
+      data: resData
+    }).then(function (resp) {
+      // alert(resp.data)
+      // //figure
+      // if(resp.data =="success"){
+      //     location.href = "http://localhost:80/DB22/addWorker.html";
+      // }
+    })
+  }
+</script>
+
+

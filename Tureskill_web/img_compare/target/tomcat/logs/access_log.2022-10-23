@@ -1,0 +1,3 @@
+0:0:0:0:0:0:0:1 - - [23/Oct/2022:23:18:19 +0800] "GET /img_compare HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [23/Oct/2022:23:18:19 +0800] "GET /img_compare/ HTTP/1.1" 404 975 http-bio-8080-exec-3 10
+0:0:0:0:0:0:0:1 - - [23/Oct/2022:23:18:19 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-4 0

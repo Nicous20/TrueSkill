@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--    config bean-->
+    <bean id= "testDao" class="learn_spring.dao.impl.TestDaoImpl"/>
+
+    <bean id= "testService" class="learn_spring.service.impl.TestServiceImpl">
+<!--        name = class name, ref = id name-->
+        <property name="testDao" ref="testDao"/>
+    </bean>
+</beans>
